@@ -1,0 +1,12 @@
+https://github.com/zuzubaidillah/basisdata.git
+git init doesn’t initialize if you already have a .git/ folder in your repository. So, for your case, do -
+
+(1) rm -rf .git/
+
+(2) git init
+
+(3) git remote add origin https://github.com/zuzubaidillah/basisdata.git
+
+(4) git commit -m “Commit message”
+
+(5) git push -f origin master
