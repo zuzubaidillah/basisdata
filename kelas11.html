@@ -10,3 +10,82 @@ git init doesn’t initialize if you already have a .git/ folder in your reposit
 (4) git commit -m “Commit message”
 
 (5) git push -f origin master
+
+<!-- membuat tabel user -->
+
+CREATE TABLE `user` ( `id_user` INT NOT NULL AUTO_INCREMENT , `nama` VARCHAR(55) NOT NULL , `username` VARCHAR(8) NOT NULL, `password` VARCHAR(8) NOT NULL , `tanggal` DATETIME NOT NULL , `level` VARCHAR(55) NOT NULL , `status` INT NOT NULL ,PRIMARY KEY (`id_user`)) ENGINE = InnoDB;
+
+<!-- membuat tabel user -->
+
+<!-- membuat tabel user -->
+
+CREATE TABLE `info` ( `id_info` INT NOT NULL AUTO_INCREMENT , `nama` VARCHAR(55) NOT NULL , `deskripsi` text NOT NULL, `logo` text NOT NULL , `email` varchar(55) NOT NULL , `fax` VARCHAR(20) NOT NULL , `status` INT NOT NULL ,`puskesmas` VARCHAR(155) NOT NULL ,`link_map` VARCHAR(155) NOT NULL , PRIMARY KEY (`id_info`)) ENGINE = InnoDB;
+
+<!-- membuat tabel user -->
+
+<!-- tabel berita -->
+
+CREATE TABLE `berita` ( `id_berita` INT NOT NULL AUTO_INCREMENT , `id_user` INT NOT NULL , `judul` VARCHAR(55) NOT NULL , `deskripsi` TEXT NOT NULL , `isi` TEXT NOT NULL , `hits` INT NOT NULL , `tanggal` DATETIME NOT NULL , `gambar` TEXT NOT NULL , `status` VARCHAR(55) NOT NULL , PRIMARY KEY (`id_berita`)) ENGINE = InnoDB;
+
+ALTER TABLE `berita` ADD CONSTRAINT `fk_berita_user` FOREIGN KEY (`id_user`) REFERENCES `user`(`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+CREATE TABLE `produk` ( `id_produk` INT NOT NULL AUTO_INCREMENT , `id_user` INT NOT NULL , `judul` VARCHAR(55) NOT NULL , `deskripsi` TEXT NOT NULL , `gambar` TEXT NOT NULL , `nama_pengusaha` VARCHAR(55) NOT NULL , `nama_usaha` VARCHAR(55) NOT NULL , `jenis_usaha` VARCHAR(55) NOT NULL , `alamat` TEXT NOT NULL , `nohp` VARCHAR(55) NOT NULL , `email` VARCHAR(55) NOT NULL , `tanggal` DATETIME NOT NULL ,  PRIMARY KEY (`id_produk`)) ENGINE = InnoDB;
+
+ALTER TABLE `produk` ADD CONSTRAINT `fk_produk_user` FOREIGN KEY (`id_user`) REFERENCES `user`(`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+CREATE TABLE `agenda` ( `id_agenda` INT NOT NULL AUTO_INCREMENT , `id_user` INT NOT NULL , `judul` VARCHAR(55) NOT NULL , `tanggal` DATE NOT NULL , `jam` TIME NOT NULL , `deskripsi` TEXT NOT NULL , `tempat` VARCHAR(125) NOT NULL , `gambar` TEXT NOT NULL , PRIMARY KEY (`id_agenda`)) ENGINE = InnoDB;
+
+ALTER TABLE `agenda` ADD CONSTRAINT `fk_agenda_user` FOREIGN KEY (`id_user`) REFERENCES `user`(`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+CREATE TABLE `brosur` ( `id_brosur` INT NOT NULL AUTO_INCREMENT , `id_user` INT NOT NULL , `judul` VARCHAR(55) NOT NULL , `tanggal` DATETIME NOT NULL , `gambar` TEXT NOT NULL , PRIMARY KEY (`id_brosur`)) ENGINE = InnoDB;
+
+ALTER TABLE `brosur` ADD CONSTRAINT `fk_brosur_user` FOREIGN KEY (`id_user`) REFERENCES `user`(`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+CREATE TABLE `kategori` ( `id_kategori` INT NOT NULL AUTO_INCREMENT , `id_user` INT NOT NULL , `nama` VARCHAR(55) NOT NULL , `lokasi` VARCHAR(100) NULL , `tanggal` DATETIME NOT NULL , `status` varchar(55) NOT NULL , `tahun` INT(5) NULL , PRIMARY KEY (`id_kategori`)) ENGINE = InnoDB;
+
+ALTER TABLE `kategori` ADD CONSTRAINT `fk_kategori_user` FOREIGN KEY (`id_user`) REFERENCES `user`(`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+CREATE TABLE `jenis_anggaran` ( `id_jenis_anggaran` INT NOT NULL AUTO_INCREMENT , `nama` VARCHAR(55) NOT NULL , PRIMARY KEY (`id_jenis_anggaran`)) ENGINE = InnoDB;
+
+CREATE TABLE `anggaran` ( `id_anggaran` INT NOT NULL AUTO_INCREMENT , `id_kategori` INT NOT NULL , `id_jenis_anggaran` INT NOT NULL , `nama` VARCHAR(55) NOT NULL , `jumlah` INT(11) NOT NULL , PRIMARY KEY (`id_anggaran`)) ENGINE = InnoDB;
+
+ALTER TABLE `anggaran` ADD CONSTRAINT `fk_kategori_anggaran` FOREIGN KEY (`id_kategori`) REFERENCES `kategori`(`id_kategori`) ON DELETE CASCADE ON UPDATE CASCADE; ALTER TABLE `anggaran` ADD CONSTRAINT `fk_jenis_anggaran_anggaran` FOREIGN KEY (`id_jenis_anggaran`) REFERENCES `jenis_anggaran`(`id_jenis_anggaran`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+CREATE TABLE `penduduk` ( `nik` INT NOT NULL AUTO_INCREMENT , `nama` varchar(55) NOT NULL , `jk` varchar(11) NOT NULL , `alamat` TEXT NOT NULL , `status` varchar(55) NOT NULL , PRIMARY KEY (`nik`)) ENGINE = InnoDB;
+
+CREATE TABLE `bayar_pajak` ( `id_bayar_pajak` INT NOT NULL AUTO_INCREMENT , `nik` INT NOT NULL , `id_kategori` INT NOT NULL , `biaya` INT(11) NOT NULL , `status` varchar(55) NOT NULL , PRIMARY KEY (`id_bayar_pajak`)) ENGINE = InnoDB;
+
+ALTER TABLE `bayar_pajak` ADD CONSTRAINT `fk_penduduk_bayar_pajak` FOREIGN KEY (`nik`) REFERENCES `penduduk`(`nik`) ON DELETE CASCADE ON UPDATE CASCADE; ALTER TABLE `bayar_pajak` ADD CONSTRAINT `fk_kategori` FOREIGN KEY (`id_kategori`) REFERENCES `kategori`(`id_kategori`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+CREATE TABLE `foto` ( `id_foto` INT NOT NULL AUTO_INCREMENT , `id_kategori` INT NOT NULL , `judul` varchar(55) NOT NULL , `gambar` TEXT NOT NULL , PRIMARY KEY (`id_foto`)) ENGINE = InnoDB;
+
+ALTER TABLE `foto` ADD CONSTRAINT `fk_kategori_foto` FOREIGN KEY (`id_kategori`) REFERENCES `kategori`(`id_kategori`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+CREATE TABLE `vidio` ( `id_vidio` INT NOT NULL AUTO_INCREMENT , `judul` varchar(55) NOT NULL , `embed` TEXT NOT NULL , `tanggal` DATETIME NOT NULL , PRIMARY KEY (`id_vidio`)) ENGINE = InnoDB;
+
+<!-- Pada klausul ON DELETE, pilih CASCADE yang berarti jika kita hapus salah satu row pada parent tabel (user), maka row pada child tabel (berita) dengan id_berita yang sama akan ikut terhapus. -->
+<!-- Pada klausul ON UPDATE, pilih CASCADE, yang berarti jika kita update nilai field id_user pada tabel user, maka id_user yang sama pada tabel berita akan ikut terupdate. -->
+
+<!-- tabel berita -->
+
+<!-- 
+
+    *Dalam Foreign Key Options tersebut ada 4 pilihan pengaturan antara lain:*
+
+    RESCRICT adalah jika kita menghapus atau merubah baris data dalam tabel A maka tidak akan diperbolehkan jika pada
+    tabel B masih ditemukan relasi datanya. InnoDB dapat menolak perintah perubahan atau penghapusan tersebut.
+
+    CASCADE adalah jika kita menghapus atau merubah baris data dalam tabel A secara otomatis akan menghapus atau merubah
+    baris yang sesuai dalam tabel B.
+
+    SET NULL adalah jika kita menghapus atau merubah baris data dalam tabel A secara otomatis akan merubah baris pada
+    tabel B menjadi NULL pada kolom yang terelasi. Hal ini dapat dilakukan jika kolom foreign key tidak memiliki
+    pengaturan NOT NULL.
+
+    NO ACTION dalam standar SQL, NO ACTION berarti tidak merubah apapun pada tabel anak jika kita merubah data pada
+    salah satu tabelnya.
+
+
+ -->
+
+ 
