@@ -41,7 +41,7 @@ CREATE TABLE `brosur` ( `id_brosur` INT NOT NULL AUTO_INCREMENT , `id_user` INT 
 
 ALTER TABLE `brosur` ADD CONSTRAINT `fk_brosur_user` FOREIGN KEY (`id_user`) REFERENCES `user`(`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
-CREATE TABLE `kategori` ( `id_kategori` INT NOT NULL AUTO_INCREMENT , `id_user` INT NOT NULL , `nama` VARCHAR(55) NOT NULL , `lokasi` VARCHAR(100) NULL , `tanggal` DATETIME NOT NULL , `status` varchar(55) NOT NULL , `tahun` INT(5) NULL , PRIMARY KEY (`id_kategori`)) ENGINE = InnoDB;
+CREATE TABLE `kategori` ( `id_kategori` INT NOT NULL AUTO_INCREMENT , `id_user` INT NOT NULL , `nama` VARCHAR(55) NOT NULL , `lokasi` VARCHAR(100) NULL , `tanggal` DATETIME NOT NULL , `status` ENUM('anggaran','pajak','foto') NOT NULL , `tahun` INT(5) NULL , PRIMARY KEY (`id_kategori`)) ENGINE = InnoDB;
 
 ALTER TABLE `kategori` ADD CONSTRAINT `fk_kategori_user` FOREIGN KEY (`id_user`) REFERENCES `user`(`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
