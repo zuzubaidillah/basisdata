@@ -86,6 +86,8 @@ CREATE TABLE `vidio` ( `id_vidio` INT NOT NULL AUTO_INCREMENT , `judul` varchar(
     salah satu tabelnya.
 
 
- -->
+-->
 
- 
+
+<!-- MEMBUAT TABEL PERANGKAT DESA -->
+CREATE TABLE `perangkatdesa` ( `id_pd` INT NOT NULL AUTO_INCREMENT , `nama_depan` varchar(55) NOT NULL , `nama_tengah` varchar(55) NULL , `nama_akhir` varchar(55) NULL , `alamat` TEXT NOT NULL , `jabatan` varchar(55) NOT NULL , PRIMARY KEY (`id_pd`)) ENGINE = InnoDB;
