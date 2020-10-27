@@ -91,3 +91,42 @@ CREATE TABLE `vidio` ( `id_vidio` INT NOT NULL AUTO_INCREMENT , `judul` varchar(
 
 <!-- MEMBUAT TABEL PERANGKAT DESA -->
 CREATE TABLE `perangkatdesa` ( `id_pd` INT NOT NULL AUTO_INCREMENT , `nama_depan` varchar(55) NOT NULL , `nama_tengah` varchar(55) NULL , `nama_akhir` varchar(55) NULL , `alamat` TEXT NOT NULL , `jabatan` varchar(55) NOT NULL , PRIMARY KEY (`id_pd`)) ENGINE = InnoDB;
+
+<!-- TAMBAH DATA TABEL AGENDA -->
+INSERT INTO `agenda` (`id_agenda`, `id_user`, `judul`, `tanggal`, `jam`, `deskripsi`, `tempat`, `gambar`) VALUES (NULL, '4', 'Perlomabaan 17 Agustu Di Balai Desa', '2019-10-27', '09:00:00', 'Perlomabaan 17 Agustu Di Balai Desa', 'Depan Balai Desa', NULL),(NULL, '4', 'Seminar Bibit Unggul Jagung Oleh Dinas Pertanian', '2019-11-20', '09:00:00', 'Seminar Bibit Unggul Jagung Oleh Dinas Pertanian', 'Di Dusun Gedang', NULL),(NULL, '4', 'Seminar Penanggulangan Narkoba Untuk Remaja Desa', '2020-01-27', '09:00:00', 'Seminar Penanggulangan Narkoba Untuk Remaja Desa', 'Depan Balai Desa', NULL),(NULL, '4', 'Hari, Pendaftaran TNI Desa Tambakrejo', '2020-09-27', '09:00:00', 'Hari, Pendaftaran TNI Desa Tambakrejo', 'Depan Balai Desa', NULL);
+
+<!-- TAMBAH DATA TABEL BERITA -->
+INSERT INTO `berita` (`id_berita`, `id_user`, `judul`, `deskripsi`, `isi`, `hits`, `tanggal`, `gambar`, `status`) VALUES 
+(NULL, '1', 'Berita Satu', 'Deskripsi Berita Satu', 'Isi Berita Satu', '0', '2020-02-27 00:00:00', 'imgsatu', 'berita'),
+(NULL, '1', 'Berita Dua', 'Deskripsi Berita Dua', 'Isi Berita Dua', '0', '2020-03-27 00:00:00', 'imgDua', 'berita'),
+(NULL, '1', 'Berita Tiga', 'Deskripsi Berita Tiga', 'Isi Berita Tiga', '0', '2020-03-27 00:00:00', 'imgTiga', 'berita'),
+(NULL, '1', 'Berita Empat', 'Deskripsi Berita Empat', 'Isi Berita Empat', '0', '2020-03-27 00:00:00', 'imgEmpat', 'berita'),
+(NULL, '1', 'Berita Lima', 'Deskripsi Berita Lima', 'Isi Berita Lima', '0', '2020-03-30 00:00:00', 'imgLima', 'berita'),
+(NULL, '1', 'Berita Enam', 'Deskripsi Berita Enam', 'Isi Berita Enam', '0', '2020-02-27 00:00:00', 'imgEnam', 'berita'),
+(NULL, '1', 'Berita Tujuh', 'Deskripsi Berita Tujuh', 'Isi Berita Tujuh', '0', '2020-01-27 00:00:00', 'imgTujuh', 'berita'),
+(NULL, '1', 'Berita Delapan', 'Deskripsi Berita Delapan', 'Isi Berita Delapan', '0', '2020-05-27 00:00:00', 'imgDelapan', 'berita'),
+(NULL, '1', 'Berita Sembilan', 'Deskripsi Berita Sembilan', 'Isi Berita Sembilan', '0', '2020-05-27 00:00:00', 'imgSembilan', 'berita'),
+(NULL, '1', 'Berita Sepuluh', 'Deskripsi Berita Sepuluh', 'Isi Berita Sepuluh', '0', '2020-05-27 00:00:00', 'imgSepuluh', 'berita'),
+(NULL, '1', 'Berita Sebelas', 'Deskripsi Berita Sebelas', 'Isi Berita Sebelas', '0', '2020-05-27 00:00:00', 'imgSebelas', 'berita'),
+(NULL, '1', 'Berita Dua Belas', 'Deskripsi Berita Dua Belas', 'Isi Berita Dua Belas', '0', '2020-05-04 00:00:00', 'imgDua Belas', 'berita'),
+(NULL, '1', 'Berita Kegiatan Posyandu Balita', 'Deskripsi Berita Kegiatan Posyandu Balita', 'Isi Berita Kegiatan Posyandu Balita', '0', '2020-10-27 00:00:00', 'imgKegiatan Posyandu Balita', 'berita'),
+(NULL, '1', 'Berita Proses Penentuan Batas Wilayah Desa', 'Deskripsi Berita Proses Penentuan Batas Wilayah Desa', 'Isi Berita Proses Penentuan Batas Wilayah Desa', '0', '2020-10-04 00:00:00', 'imgProses Penentuan Batas Wilayah Desa', 'berita'),
+(NULL, '1', 'Kegiatan Sedekah Desa Untuk Mensyukuri Pertanian', 'Deskripsi Kegiatan Sedekah Desa Untuk Mensyukuri Pertanian', 'Isi Kegiatan Sedekah Desa Untuk Mensyukuri Pertanian', '0', '2020-10-02 00:00:00', 'imgsatu', 'berita'),
+(NULL, '1', 'Kegiatan Sedekah Desa Untuk Mensyukuri Pertanian Satu', 'Deskripsi Kegiatan Sedekah Desa Untuk Mensyukuri Pertanian Satu', 'Isi Kegiatan Sedekah Desa Untuk Mensyukuri Pertanian Satu', '0', '2020-10-11 00:00:00', 'imgsatu', 'berita'),
+(NULL, '1', 'Wisata Permadani Terbang Yang Lagi Viral', 'Deskripsi Wisata Permadani Terbang Yang Lagi Viral', 'Isi Wisata Permadani Terbang Yang Lagi Viral', '0', '2020-10-11 00:00:00', 'imgsatu', 'berita'),
+(NULL, '1', 'Pesona Kedung Cinet, Miniatur Grand Canyon', 'Deskripsi Pesona Kedung Cinet, Miniatur Grand Canyon', 'Isi Pesona Kedung Cinet, Miniatur Grand Canyon', '0', '2020-10-11 00:00:00', 'imgsatu', 'berita'),
+(NULL, '1', 'MUSDES PRA MUSRENBANGDES TA 2020', 'Deskripsi MUSDES PRA MUSRENBANGDES TA 2020', 'Isi MUSDES PRA MUSRENBANGDES TA 2020', '0', '2020-10-22 00:00:00', 'imgsatu', 'berita');
+
+
+<!-- tambah Data tabel berita dengan status page -->
+INSERT INTO `berita` (`id_berita`, `id_user`, `judul`, `deskripsi`, `isi`, `hits`, `tanggal`, `gambar`, `status`) VALUES 
+(NULL, '2', 'visi dan misi', '', 'visi dan misi', '0', '2020-02-27 00:00:00', null, 'page'),
+(NULL, '2', 'sejarah singkat', '', 'sejarah singkat', '0', '2020-03-27 00:00:00', null, 'page'),
+(NULL, '2', 'demografis desa', '', 'demografis desa', '0', '2020-03-27 00:00:00', null, 'page');
+
+<!-- TAMBAH DATA TABEL PRODUK -->
+INSERT INTO `produk` (`id_produk`, `id_user`, `judul`, `deskripsi`, `gambar`, `nama_pengusaha`, `nama_usaha`, `jenis_usaha`, `alamat`, `nohp`, `email`, `tanggal`) VALUES 
+(NULL, '1', 'Tropical Ice Drink', 'Tropical Ice drink adalah contoh produk sidedi.id', 'default.jpg', 'Yazidin', 'Tropical Ice', 'Tropical Ice Drink Minuman', 'Dsn. Penjalinan 013/005, Ds. Dukuhklopo, Kec. Peterongan', '+6285843322100', 'kiranapedia@gmail.com', '2020-10-27 00:00:00'),
+(NULL, '1', 'Susu Fajar Subuh', 'Susu Fajar Subuh adalah contoh produk sidedi.id', 'default.jpg', 'M. Andy Fajar Subuh', 'Kedai Susu Fajar Subuh', 'Tropical Ice Drink Minuman', 'Tambakberas, Tambakrejo, Jombang', '+6285843322100', 'fajarsubuh@gmail.com', '2020-10-27 00:00:00'),
+(NULL, '1', 'Riyanto Kripik Kriuk', 'Riyanto Kripik Kriuk adalah Kripik dengan cita rasa yang menggugah selera, cocok dimakan keluarga, rasakan sensasi makan kripik dengan cita rasa tiada dua. Anda bisa memesan dalam jumlah satuan atau jumlah besar dengan diskon yang besar.
+', 'default.jpg', 'Yazidin', 'Tropical Ice', 'Riyanto Kripik Kriuk', 'Jl. Cendrawasih 57 Jombang', '+6285843322100', 'riyantoud@gmail.com', '2020-10-27 00:00:00');
